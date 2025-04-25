@@ -24,7 +24,7 @@ public abstract class InMemoryRepository<T extends EntityWithId> implements Repo
 
   @Override
   public List<T> findAll() {
-    return collection.entrySet().stream().map(Map.Entry::getValue).collect(Collectors.toList());
+    return collection.values().stream().collect(Collectors.toList());
   }
 
   @Override
