@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class BasicAuthProvider implements AuthenticationProvider {
 
-  private AuthenticatedUserService authenticatedUserService;
+  private final AuthenticatedUserService authenticatedUserService;
 
   public BasicAuthProvider(AuthenticatedUserService authenticatedUserService) {
     this.authenticatedUserService = authenticatedUserService;

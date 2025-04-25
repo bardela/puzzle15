@@ -2,11 +2,11 @@ package com.ardela.puzzle15.repository.base;
 
 import com.ardela.puzzle15.model.base.EntityWithId;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
-import java.util.stream.Collectors;
 
 public abstract class InMemoryRepository<T extends EntityWithId> implements Repository<T> {
   protected final Map<Integer, T> collection = new ConcurrentHashMap<>();
@@ -24,7 +24,7 @@ public abstract class InMemoryRepository<T extends EntityWithId> implements Repo
 
   @Override
   public List<T> findAll() {
-    return collection.values().stream().collect(Collectors.toList());
+    return new ArrayList<>(collection.values());
   }
 
   @Override
