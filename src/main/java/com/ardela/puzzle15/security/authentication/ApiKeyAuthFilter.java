@@ -1,5 +1,6 @@
 package com.ardela.puzzle15.security.authentication;
 
+import com.ardela.puzzle15.properties.PropertiesConfig;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -16,9 +17,14 @@ import java.io.IOException;
 @Component
 public class ApiKeyAuthFilter extends OncePerRequestFilter {
 
-  private static final String API_KEY_HEADER = "X-API-Key";
-  private static final String VALID_API_KEY = "my-secret-api-key";
+  private final String authClientHeader;
 
+  private final String authClientKey;
+
+  public ApiKeyAuthFilter(PropertiesConfig propertiesConfig) {
+    authClientHeader = propertiesConfig.getAuthClientHeader();
+    authClientKey = propertiesConfig.getAuthClientKey();
+  }
 
   @Override
   protected void doFilterInternal(
@@ -27,8 +33,8 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
       FilterChain filterChain
   ) throws ServletException, IOException {
 
-    String apiKey = request.getHeader(API_KEY_HEADER);
-    if (!VALID_API_KEY.equals(apiKey)) {
+    String requestApiKey = request.getHeader(authClientHeader);
+    if (requestApiKey == null || !requestApiKey.equals(authClientKey)) {
       throw new BadCredentialsException("Client not valid Api Key");
     }
 
@@ -42,7 +48,7 @@ public class ApiKeyAuthFilter extends OncePerRequestFilter {
     }
 
     context.setAuthentication(
-        new UsernamePasswordAuthenticationToken(API_KEY_HEADER, null, null)
+        new UsernamePasswordAuthenticationToken(authClientHeader, null, null)
     );
   }
 }
