@@ -28,7 +28,7 @@ public class BasicAuthFilter extends OncePerRequestFilter {
   }
 
   boolean requiresBasicAuth(HttpServletRequest request) {
-    return request.getRequestURI().startsWith("/employee");
+    return request.getRequestURI().startsWith("/games");
   }
 
   boolean hasBasicAuth(HttpServletRequest request) {
