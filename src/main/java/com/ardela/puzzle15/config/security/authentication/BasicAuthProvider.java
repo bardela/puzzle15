@@ -1,4 +1,4 @@
-package com.ardela.puzzle15.security.authentication;
+package com.ardela.puzzle15.config.security.authentication;
 
 import com.ardela.puzzle15.service.AuthenticatedUserService;
 import org.springframework.security.authentication.AuthenticationProvider;

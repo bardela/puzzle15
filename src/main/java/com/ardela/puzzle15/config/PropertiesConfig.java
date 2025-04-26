@@ -1,4 +1,4 @@
-package com.ardela.puzzle15.properties;
+package com.ardela.puzzle15.config;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;

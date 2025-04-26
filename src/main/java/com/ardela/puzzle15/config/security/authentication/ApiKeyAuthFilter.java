@@ -1,6 +1,6 @@
-package com.ardela.puzzle15.security.authentication;
+package com.ardela.puzzle15.config.security.authentication;
 
-import com.ardela.puzzle15.properties.PropertiesConfig;
+import com.ardela.puzzle15.config.PropertiesConfig;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
