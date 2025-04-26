@@ -1,10 +1,12 @@
 package com.ardela.puzzle15.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.Arrays;
 
 @Data
+@NoArgsConstructor
 public class Board {
   private int[][] pieces;
   public Board(int[][] pieces) {

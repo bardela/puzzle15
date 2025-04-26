@@ -20,8 +20,14 @@ public class GameRepository extends InMemoryRepository<Game> {
   }
 
   Board copyBoard(Board origin) {
-    return new Board(
-        ArrayUtils.copyMatrix(origin.getPieces())
-    );
+    if (origin == null) {
+      return null;
+    }
+
+    int[][] pieces = origin.getPieces() != null
+        ? ArrayUtils.copyMatrix(origin.getPieces())
+        : null;
+
+    return new Board(pieces);
   }
 }

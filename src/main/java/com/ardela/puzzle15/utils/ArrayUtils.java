@@ -1,5 +1,6 @@
 package com.ardela.puzzle15.utils;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -7,14 +8,12 @@ import java.util.stream.IntStream;
 
 public class ArrayUtils {
   public static int[][] copyMatrix(int[][] matrix) {
-    return IntStream.range(0, matrix.length)
-        .mapToObj(row -> copyRow(matrix[row]))
+    return Arrays.stream(matrix).map(ArrayUtils::copyRow)
         .toArray(int[][]::new);
   }
 
   public static int[] copyRow(int[] row) {
-    return IntStream.range(0, row.length)
-        .map(col -> row[col])
+    return Arrays.stream(row, 0, row.length)
         .toArray();
   }
 
