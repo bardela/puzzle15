@@ -16,10 +16,8 @@ public class AuthenticatedUserService {
   }
 
   public UserDetails findByUsername(String username) {
-    User user = userRepository.findByUserName(username);
-    if (user == null) {
-      throw new UsernameNotFoundException("Authenticated user not found");
-    }
+    User user = userRepository.findByUserName(username)
+        .orElseThrow(() -> new UsernameNotFoundException("Authenticated user not found"));
 
     return org.springframework.security.core.userdetails.User
         .withUsername(user.getUsername())

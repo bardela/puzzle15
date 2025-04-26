@@ -5,6 +5,7 @@ import com.ardela.puzzle15.model.base.EntityWithId;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
@@ -18,8 +19,8 @@ public abstract class InMemoryRepository<T extends EntityWithId> implements Repo
   }
 
   @Override
-  public T findById(Integer id) {
-    return collection.getOrDefault(id, null);
+  public Optional<T> findById(Integer id) {
+    return Optional.ofNullable(collection.get(id));
   }
 
   @Override
