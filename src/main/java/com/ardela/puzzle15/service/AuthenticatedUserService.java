@@ -1,23 +1,20 @@
 package com.ardela.puzzle15.service;
 
 import com.ardela.puzzle15.model.User;
-import com.ardela.puzzle15.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
 public class AuthenticatedUserService {
 
-  private final UserRepository userRepository;
-  public AuthenticatedUserService(UserRepository userRepository) {
-    this.userRepository = userRepository;
+  private final UserService userService;
+  public AuthenticatedUserService(UserService userService) {
+    this.userService = userService;
   }
 
   public UserDetails findByUsername(String username) {
-    User user = userRepository.findByUserName(username)
-        .orElseThrow(() -> new UsernameNotFoundException("Authenticated user not found"));
+    User user = userService.findByUsername(username);
 
     return org.springframework.security.core.userdetails.User
         .withUsername(user.getUsername())
