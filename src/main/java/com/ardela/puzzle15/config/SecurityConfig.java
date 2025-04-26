@@ -23,7 +23,7 @@ public class SecurityConfig {
       ApiKeyAuthFilter apiKeyAuthFilter
   ) throws Exception {
     http
-        .securityMatcher("/games/")
+        .securityMatcher("/games/*", "/games/", "/games/*/*")
         .httpBasic(Customizer.withDefaults())
         .addFilterBefore(basicAuthFilter, UsernamePasswordAuthenticationFilter.class);
 
