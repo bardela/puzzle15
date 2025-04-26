@@ -71,9 +71,9 @@ public class GameCreatorServiceTests {
     );
   }
 
-  User createUser(Integer userId, String username) {
+  User createUser(String username) {
     User user = new User();
-    user.setId(userId);
+    user.setId(1);
     user.setUsername(username);
     user.setRol("USER");
     return user;
@@ -83,7 +83,7 @@ public class GameCreatorServiceTests {
   void createNewGame_success() {
     // Arrange
     when(userDetails.getUsername()).thenReturn("john");
-    User user = createUser(1, "");
+    User user = createUser("john");
     when(userService.findByUsername(userDetails.getUsername())).thenReturn(user);
 
     // Act
@@ -114,9 +114,9 @@ public class GameCreatorServiceTests {
 
   List<Integer> matrixToList(int[][] matrix) {
     List<Integer> list = new ArrayList<>();
-    for (int i = 0; i < matrix.length; i++) {
-      for (int j = 0; j < matrix[i].length; j ++) {
-        list.add(matrix[i][j]);
+    for (int[] row : matrix) {
+      for (int content : row) {
+        list.add(content);
       }
     }
     return list;
