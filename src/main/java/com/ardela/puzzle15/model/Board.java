@@ -7,8 +7,8 @@ import java.util.Arrays;
 @Data
 public class Board {
   private int[][] pieces;
-
-  public Board() {
+  public Board(int[][] pieces) {
+    this.pieces = pieces;
   }
 
   @Override
