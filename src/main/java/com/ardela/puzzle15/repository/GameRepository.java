@@ -9,22 +9,19 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class GameRepository extends InMemoryRepository<Game> {
   @Override
-  protected Game copyData(Game origin) {
-    Game game = new Game();
-    game.setId(origin.getId());
-    game.setUserId(origin.getUserId());
-    game.setStatus(origin.getStatus());
-    game.setUpdatedAt(origin.getUpdatedAt());
-
-    Board board = copyBoard(origin.getBoard());
-    game.setBoard(board);
-
-    return game;
+  public Game copyData(Game origin) {
+    return new Game(
+        origin.getId(),
+        origin.getUserId(),
+        copyBoard(origin.getBoard()),
+        origin.getStatus(),
+        origin.getUpdatedAt()
+    );
   }
 
   Board copyBoard(Board origin) {
-    Board board = new Board();
-    board.setPieces(ArrayUtils.copyMatrix(origin.getPieces()));
-    return board;
+    return new Board(
+        ArrayUtils.copyMatrix(origin.getPieces())
+    );
   }
 }
