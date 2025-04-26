@@ -1,7 +1,7 @@
-package com.ardela.puzzle15.config.security;
+package com.ardela.puzzle15.config;
 
-import com.ardela.puzzle15.config.security.authentication.BasicAuthFilter;
-import com.ardela.puzzle15.config.security.authentication.ApiKeyAuthFilter;
+import com.ardela.puzzle15.config.authentication.BasicAuthFilter;
+import com.ardela.puzzle15.config.authentication.ApiKeyAuthFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.annotation.Order;
