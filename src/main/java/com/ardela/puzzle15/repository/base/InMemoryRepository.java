@@ -20,6 +20,9 @@ public abstract class InMemoryRepository<T extends EntityWithId> implements Repo
 
   @Override
   public Optional<T> findById(Integer id) {
+    if (id == null) {
+      return Optional.empty();
+    }
     return Optional.ofNullable(collection.get(id));
   }
 

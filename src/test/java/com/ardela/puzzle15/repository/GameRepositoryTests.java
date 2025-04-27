@@ -6,6 +6,7 @@ import com.ardela.puzzle15.model.Status;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.time.Instant;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -31,8 +32,10 @@ public class GameRepositoryTests {
     };
     Board board = new Board(pieces);
 
+    Instant instant1secondAgo = Instant.now().minusSeconds(1);
+    Date date1secondAgo = Date.from(instant1secondAgo);
     return new Game(
-        userId, board, Status.PROGRESS
+        null, userId, board, Status.PROGRESS, date1secondAgo
     );
   }
 
