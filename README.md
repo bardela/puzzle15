@@ -114,7 +114,8 @@ an API Gateway, but I found it a bit overkill for the size of the project.
 ### Functionality
 Only the Game creation and move End points have been completed
 Unfortunately, I didn't have more time to adding a new end point for terminating a Game by an admin, but
-the ground work is there. See `//TODO` in `GameController.java`
+the ground work is there, except implementing a Producer with the message for RabbitMQ. 
+See `//TODO` in `GameController.java`
 
 ### Test Coverage
 Just covered a few cases when creating a game due to lack of time.
