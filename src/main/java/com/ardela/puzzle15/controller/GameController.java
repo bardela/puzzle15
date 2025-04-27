@@ -48,4 +48,16 @@ public class GameController {
         HttpStatus.OK
     );
   }
+
+  @PostMapping("/{gameId}/terminate")
+  public ResponseEntity<Game> terminate(
+      @AuthenticationPrincipal UserDetails userDetails,
+      @PathVariable Integer gameId
+  ) {
+    // TODO: terminate
+    return new ResponseEntity<>(
+        new Game(),
+        HttpStatus.OK
+    );
+  }
 }
