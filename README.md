@@ -88,3 +88,36 @@ curl --location --request POST 'http://localhost:8080/games/1/move' \
 Will receive the Game data after performing the move
 
 
+## Decisions about Implementation
+### Spring Boot
+Chose the framework cause it makes it easier to create APIs with its annotations, dependencies and tools 
+
+### Authentication
+The game has 2 levels of authentication
+1. Client Authentication (api-key)
+2. User Authentication (Basic Authentication)
+
+Decided to implement **client authentication** in order to protect the API from unknown clients.
+Of course in a real production environment, there would be different keys for clients and they could be renewed or revoked.
+
+I added **Basic Authentication** to prevent other users than the _owner_ of the game to play his/her game. Again, this
+is just an example, but in a real world, we would have a more complex that would include Tokens and sessions.
+
+I used the Springboot classes and methods for implementing these 2 methods to meet the minimum authentication requirements
+of the exercise. They're located in `SecurityConfig.java` and `src/main/java/com/ardela/puzzle15/config/authentication/`
+
+
+### Monolith
+I considered having different microservices for Authentication and Game CRUD operations connected by
+an API Gateway, but I found it a bit overkill for the size of the project.
+
+### Functionality
+Only the Game creation and move End points have been completed
+Unfortunately, I didn't have more time to adding a new end point for terminating a Game by an admin, but
+the ground work is there. See `//TODO` in `GameController.java`
+
+### Test Coverage
+Just covered a few cases when creating a game due to lack of time.
+. See `//TODO` in `GameControllerTests.java`
+
+
